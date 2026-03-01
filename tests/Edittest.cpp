@@ -6,7 +6,7 @@
 BOOST_AUTO_TEST_SUITE(DocumentTest)
 
     BOOST_AUTO_TEST_CASE(TestAddAndRemovePrimitve) {
-        Document doc;
+        Document doc; 
       //  Point startLine = { 10, 10 };
       //  Point endLine = { 100, 100 };
         auto line = std::make_unique<Line>();
