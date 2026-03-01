@@ -1,4 +1,4 @@
-﻿#pragma once
+
 #include<iostream>
 #include "Controller.h"
 //#include "GraphicPrimitive.h"
@@ -49,4 +49,5 @@ void Controller::RemovePrimitive(size_t index) {
 	view->showMessage(str);
 	updateView();
 }
+
 
