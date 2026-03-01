@@ -9,7 +9,7 @@ BOOST_AUTO_TEST_SUITE(DocumentTest)
         Document doc; 
       //  Point startLine = { 10, 10 };
       //  Point endLine = { 100, 100 };
-        auto line = std::make_unique<Line>();
+        auto line = std::make_unique<Line>(); 
 
         // Проверка добавления примитивов
         doc.addPrimitive(std::move(line));
