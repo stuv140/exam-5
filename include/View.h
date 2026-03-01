@@ -16,6 +16,7 @@ class ConsoleView :public View
 public:
     void showMessage(const std::string& msg) override;
     void displayDocument(const Document& doc) override;
-    virtual ~ConsoleView() {} override = default;
+    virtual ~ConsoleView() {};
 };
+
 
