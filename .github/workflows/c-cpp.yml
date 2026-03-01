@@ -18,7 +18,7 @@ jobs:
       - run: cmake --build .
       - run: |
          cmake --build . --target test
-         cat /home/runner/work/exam3/exam3/Testing/Temporary/LastTest.log
+         cat /home/runner/work/exam-5/exam-5/Testing/Temporary/LastTest.log
       - run: cmake --build . --target package
       - name: Create Release
         id: create_release
@@ -38,7 +38,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: test-logs
-          path: Testing/Temporary/LastTest.log
+          path: Tests/Temporary/LastTest.log
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
         env:
