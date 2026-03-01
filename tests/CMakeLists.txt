@@ -3,7 +3,7 @@ set(Boost_NO_BOOST_CMAKE ON)
 find_package(Boost REQUIRED COMPONENTS unit_test_framework)
 
 # Только файлы тестов, например, Edittest.cpp
-add_executable(Edit_tests EditTest.cpp)
+add_executable(Edit_tests Edittest.cpp)
 
 target_include_directories(Edit_tests PRIVATE ${PROJECT_SOURCE_DIR}/include ${Boost_INCLUDE_DIRS})
 
