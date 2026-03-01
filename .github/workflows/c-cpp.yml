@@ -38,7 +38,9 @@ jobs:
           cat Tests/Temporary/LastTest.log || true
 
       - name: Create package
-        run: cmake --build . --target package
+        run: |
+          cmake --build . --target package
+          mv Editor-0.1.0-Linux.deb Editor-${{ github.run_number }}-Linux.deb
 
       - name: Verify package creation
         run: ls -l Editor-*
