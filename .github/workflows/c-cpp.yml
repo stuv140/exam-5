@@ -10,10 +10,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # Для работы с релизами и управлением контентом
-      packages: write  # Для выгрузки пакетов
-      pull-requests: write  # Для слияния pull-request
-      issues: write    # Для комментирования задач
+      contents: write
+      packages: write
+      pull-requests: write
+      issues: write
 
     steps:
       - uses: actions/checkout@v2
@@ -39,6 +39,9 @@ jobs:
 
       - name: Create package
         run: cmake --build . --target package
+
+      - name: Verify package creation
+        run: ls -l Editor-*
 
       - name: Create Release
         id: create_release
