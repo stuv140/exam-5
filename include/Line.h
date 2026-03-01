@@ -12,9 +12,10 @@ public:
     Line() : begin({}), end({}) {} 
 	Point Get_Begin() const { return begin; }
 	Point Get_end()const { return end; }
-   virtual ~Line()=default {};
+   virtual ~Line() override =default {};
 
 };
+
 
 
 
