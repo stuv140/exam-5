@@ -8,8 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    permissions:
+    runs-on: ubuntu-latest  
     steps:
       - uses: actions/checkout@v2
         with:
@@ -48,4 +47,4 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: Editor-0.1.0-Linux.deb
           asset_name: Editor-0.1.0-Linux.deb
-          asset_content_type: application/vnd.debian.binary-package
+          asset_content_type: application/vnd.debian.binary-packageapplication/vnd.debian.binary-package
