@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 
-//#include "Line.h"
+#include "GraphicPrimitive.h"
 
 class Circle: public GraphicPrimitive
 {
@@ -16,6 +16,7 @@ public:
     int GetRadius()const { return radius_; }
     virtual ~Circle() {};
 };
+
 
 
 
