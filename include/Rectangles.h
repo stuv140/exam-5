@@ -7,8 +7,10 @@ public:
 	void draw()const override;
 	Point GetLeftPoint()const { return left_up_angle; }
 	Point GetRightPoint() const { return right_Down_angle; }
+    virtual ~Rectangles() {} override = default;
 private:
 	Point left_up_angle;
 	Point right_Down_angle;
 };
+
 
