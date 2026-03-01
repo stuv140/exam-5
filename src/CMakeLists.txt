@@ -10,14 +10,14 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Ищем все файлы в папке src
 #file(GLOB_RECURSE SOURCE_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "*.cpp" "*.hpp")
 set(SOURCE_FILES
-    src/Editor.cpp
-    src/Document.cpp
-    src/Controller.cpp
-    src/GraphicPrimitive.cpp
-    src/Line.cpp
-    src/Circle.cpp
-    src/Rectangles.cpp
-    src/View.cpp
+    Editor.cpp
+    Document.cpp
+    Controller.cpp
+    GraphicPrimitive.cpp
+    Line.cpp
+    Circle.cpp
+    Rectangles.cpp
+    View.cpp
 )
 
 # Добавляем исполняемый файл
