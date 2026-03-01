@@ -35,7 +35,7 @@ jobs:
       - name: Display test results
         run: |
           ctest --output-on-failure
-          cat Testing/Temporary/LastTest.log || true
+          cat Tests/Temporary/LastTest.log || true
 
       - name: Create package
         run: cpack -G DEB
