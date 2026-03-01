@@ -10,10 +10,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # для работы с содержимым репозитория
-      packages: write  # для выгрузки пакетов
-      pull-requests: write  # для работы с пулл реквестами
-      issues: write  # для комментирования задач
+      contents: write
+      packages: write
+      pull-requests: write
+      issues: write
 
     steps:
       - uses: actions/checkout@v2
@@ -38,7 +38,10 @@ jobs:
           cat Testing/Temporary/LastTest.log || true
 
       - name: Create package
-        run: cmake --build . --target package
+        run: cpack -G DEB
+
+      - name: Verify package creation
+        run: ls -l Editor-*.deb
 
       - name: Create Release
         id: create_release
