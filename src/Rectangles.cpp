@@ -1,4 +1,4 @@
-﻿#pragma once
+
 #include<memory>
 #include <iostream>
 #include "Rectangles.h"
@@ -37,4 +37,5 @@ void Rectangles::draw()const {
 
 	doc.drawAllPrimitives();
 	doc.clearPrimitives();
+
 }
