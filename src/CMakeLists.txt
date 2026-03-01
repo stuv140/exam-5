@@ -8,7 +8,17 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Ищем все файлы в папке src
-file(GLOB_RECURSE SOURCE_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "*.cpp" "*.hpp")
+#file(GLOB_RECURSE SOURCE_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "*.cpp" "*.hpp")
+set(SOURCE_FILES
+    src/Editor.cpp
+    src/Document.cpp
+    src/Controller.cpp
+    src/GraphicPrimitive.cpp
+    src/Line.cpp
+    src/Circle.cpp
+    src/Rectangles.cpp
+    src/View.cpp
+)
 
 # Добавляем исполняемый файл
 add_executable(Editor ${SOURCE_FILES})
