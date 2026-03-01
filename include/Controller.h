@@ -5,7 +5,7 @@
 
 class Controller
 {
-public:
+public: 
 	Controller(Document* _doc, View* _view);
     void CreateNew();
     void Load(const std::string& filename);    
@@ -22,4 +22,5 @@ private:
     Document* doc;
     View* view;
 };
+
 
