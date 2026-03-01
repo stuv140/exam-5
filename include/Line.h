@@ -11,8 +11,9 @@ public:
 	Line(Point one, Point two):begin(one),end(two){}
 	Point Get_Begin() const { return begin; }
 	Point Get_end()const { return end; }
-   virtual ~Line() {} override = default;
+   virtual ~Line() {};
 
 };
+
 
 
