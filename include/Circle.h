@@ -14,7 +14,9 @@ public:
     void draw() const override;
     Point GetCenter()const { return center_; }
     int GetRadius()const { return radius_; }
+    virtual ~Circle() {} override = default;
 };
+
 
 
 
