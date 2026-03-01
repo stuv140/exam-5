@@ -8,18 +8,38 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest  
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # для работы с содержимым репозитория
+      packages: write  # для выгрузки пакетов
+      pull-requests: write  # для работы с пулл реквестами
+      issues: write  # для комментирования задач
+
     steps:
       - uses: actions/checkout@v2
         with:
           submodules: true
-      - run: sudo apt-get update && sudo apt-get install libboost-test-dev -y
-      - run: cmake . -DPATCH_VERSION=${{ github.run_number }} -DWITH_BOOST_TEST=ON
-      - run: cmake --build .
-      - run: |
-         cmake --build . --target test
-         cat /home/runner/work/exam-5/exam-5/Testing/Temporary/LastTest.log
-      - run: cmake --build . --target package
+
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install libboost-test-dev -y
+
+      - name: Configure CMake
+        run: cmake . -DPATCH_VERSION=${{ github.run_number }} -DWITH_BOOST_TEST=ON
+
+      - name: Build project
+        run: cmake --build .
+
+      - name: Run tests
+        run: cmake --build . --target test
+
+      - name: Display test results
+        run: |
+          ctest --output-on-failure
+          cat Testing/Temporary/LastTest.log || true
+
+      - name: Create package
+        run: cmake --build . --target package
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -30,21 +50,19 @@ jobs:
           release_name: Release ${{ github.run_number }}
           draft: false
           prerelease: false
-      - name: Run tests and display logs
-        run: |
-          ctest --output-on-failure
-          cat Testing/Temporary/LastTest.log
+
       - name: Upload test logs as artifact
         uses: actions/upload-artifact@v4
         with:
           name: test-logs
-          path: Tests/Temporary/LastTest.log
+          path: Testing/Temporary/LastTest.log
+
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: Editor-0.1.0-Linux.deb
-          asset_name: Editor-0.1.0-Linux.deb
-          asset_content_type: application/vnd.debian.binary-packageapplication/vnd.debian.binary-package
+          asset_path: Editor-${{ github.run_number }}-Linux.deb
+          asset_name: Editor-${{ github.run_number }}-Linux.deb
+          asset_content_type: application/vnd.debian.binary-package
