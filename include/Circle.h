@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "GraphicPrimitive.cpp"
+//#include "GraphicPrimitive.cpp"
 //#include "Line.h"
 
 class Circle: public GraphicPrimitive
@@ -15,4 +15,5 @@ public:
     Point GetCenter()const { return center_; }
     int GetRadius()const { return radius_; }
 };
+
 
