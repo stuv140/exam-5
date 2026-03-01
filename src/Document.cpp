@@ -1,4 +1,4 @@
-﻿#pragma once
+
 #include "Document.h"
 //#include<memory>
 #include<iostream>
@@ -107,4 +107,5 @@ void Document::removePrimitiveAt(size_t index) {
 		throw std::out_of_range("Индекс за пределами доступных примитивов.");
 	}
 	primitives.erase(primitives.begin() + index);
+
 }
