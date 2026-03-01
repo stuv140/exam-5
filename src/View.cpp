@@ -1,4 +1,4 @@
-﻿#pragma once
+
 #include "View.h"
 #include<string>
 #include<iostream>
@@ -10,4 +10,5 @@ void ConsoleView::showMessage(const std::string& msg)  {
 void ConsoleView::displayDocument(const Document& doc)  {
     std::cout << "The document contains  " << doc.getPrimitivesCount() << " primitivs.\n";
     doc.drawAllPrimitives();
+
 }
