@@ -10,10 +10,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      packages: write
-      pull-requests: write
-      issues: write
+      contents: write  # Для работы с релизами и управлением контентом
+      packages: write  # Для выгрузки пакетов
+      pull-requests: write  # Для слияния pull-request
+      issues: write    # Для комментирования задач
 
     steps:
       - uses: actions/checkout@v2
@@ -35,13 +35,18 @@ jobs:
       - name: Display test results
         run: |
           ctest --output-on-failure
-          cat Tests/Temporary/LastTest.log || true
+          cat Testing/Temporary/LastTest.log || true
 
       - name: Create package
-        run: cpack -G DEB
+        run: cmake --build . --target package
 
-      - name: Verify package creation
-        run: ls -l Editor-*.deb
+      - name: Delete previous releases
+        uses: softprops/action-gh-release@v1
+        with:
+          delete_assets: true
+          tag_name: ${{ github.run_number }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create Release
         id: create_release
@@ -53,8 +58,14 @@ jobs:
           release_name: Release ${{ github.run_number }}
           draft: false
           prerelease: false
+
+      - name: Upload test logs as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-logs
+          path: Testing/Temporary/LastTest.log
+
       - name: Upload Release Asset
-        id: upload-release-asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
