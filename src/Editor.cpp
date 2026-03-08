@@ -17,9 +17,10 @@
 
 int main()
 {
-    Document doc;
-    ConsoleView consoleView;
-    Controller controller(&doc, &consoleView);
+  //  Document doc;
+  //  ConsoleView consoleView;
+   // Controller controller(&doc, &consoleView);
+    Controller controller
     Point startLine = {10, 10};
     Point endLine= { 100, 100 };
   //  auto line = std::make_unique<Line>(startLine, endLine);
@@ -60,3 +61,4 @@ int main()
 //   4. В окне "Список ошибок" можно просматривать ошибки.
 //   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
 //   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.
+
