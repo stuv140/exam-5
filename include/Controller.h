@@ -6,7 +6,8 @@
 class Controller
 {
 public: 
-	Controller(Document* _doc, View* _view);
+	Controller();
+    //Controller(Document* _doc, View* _view);
     void CreateNew();
     void Load(const std::string& filename);    
     void Save(const std::string& filename);
@@ -19,8 +20,9 @@ private:
     void updateView() {
         view->displayDocument(*doc);
     }
-    Document* doc;
-    View* view;
+    std::unique_ptr<Document> doc;
+    std::unique_ptr<View> view;
 };
+
 
 
