@@ -1,19 +1,25 @@
 
 #include<iostream>
 #include "Controller.h"
+#include<memory>
 //#include "GraphicPrimitive.h"
 //#include "View.h"
 //#include "Document.h"
-//#include<iostream>
-
-Controller::Controller(Document* _d, View* _v): doc(_d), view(_v)
-{
-
+#include<iostream>
+Controller::Controller()
+{	
+	doc=std::make_unique<Document>();
+	view = std::make_unique<ConsoleView>();
 }
+//Controller::Controller(Document* _d, View* _v): doc(_d), view(_v)
+//{
+
+//}
 void Controller::CreateNew()
 {
 	doc->clearPrimitives();
-	doc->createNew();
+	doc.reset(new Document);
+	//doc->createNew();
 	view->showMessage("Create New Document!");
 	updateView();
 	//std::cout << "Create New document" << std::endl;
@@ -49,5 +55,6 @@ void Controller::RemovePrimitive(size_t index) {
 	view->showMessage(str);
 	updateView();
 }
+
 
 
